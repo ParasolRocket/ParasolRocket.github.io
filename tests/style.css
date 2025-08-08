@@ -155,6 +155,15 @@ footer {
     nav + nav{
       margin-top: 1vh;
     }
+    section{
+      &.c{
+        margin-top: 2rem;
+      }
+      p{
+        color: white;
+        font-size: small;
+      }
+    }
   }
 }
 
