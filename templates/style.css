@@ -297,7 +297,10 @@ section{
     padding-left: 2.5em;
     position: relative;
     margin: 5rem 0;
-    background-color: #00c8ff1a;
+    /* background-color: #00c8ff1a; */
+    background-image:  radial-gradient(#00c8ff2f 2px, transparent 2px), radial-gradient(#00c8ff2f 2px, #00c8ff1a 2px);
+    background-size: 40px 40px;
+    background-position: 0 0,20px 20px;
     h4 {
       color: #0D1117;
       background: #00C8FF;
@@ -312,6 +315,19 @@ section{
       list-style: none;
     }
   }
+}
+
+.bg_pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fffff;
+  opacity: 0.4;
+  z-index: -1;
+}
+.Polka_v2 {
 }
 
 @media (max-width: 600px) {
