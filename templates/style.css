@@ -15,9 +15,10 @@ body {
 }
 
 header {
+  z-index: 10;
   width: 100vw;
   position: fixed;
-  background-color: #D4E09B;
+  background-color: #00FF9D;
   font-weight: 900;
   display: flex;
   justify-content: space-between;
@@ -39,8 +40,9 @@ header {
       width: 10vw;
       line-height: 6vh;
       text-align: center;
+      transition: all 0.5s;
       &:hover{
-        background-color: lightgray;
+        background-color: #00ec92;
       }
       a{
         display: block;
@@ -63,13 +65,15 @@ nav{
     justify-content: center;
     align-items: center;
     width: 80vw;
-    height: 40vh;
+    height: 40vw;
+    max-height: 450px;
     background-image: url('img/Post-apocalyptic-cityscape8.jpg');
     background-color: #f6f4d2b1;
     background-blend-mode: overlay;
     box-shadow: inset 15px 0px 25px rgba(0, 0, 0, 0.294), inset -15px -15px 25px rgba(0,0,0,0.294);
     img{
-      width: 30vw;
+      width: 50%;
+      max-width: 400px;
     }
   }
 }
@@ -83,13 +87,31 @@ main{
   align-items: center;
   article{
     flex: 1;
-    background-color: #F6F4D2;
+    background-color: #0D1117;
     max-width: 1000px;
     margin: 2vh 2vw;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 8vh 8vw;
+    color: #E6EDF3;
+    .tags{
+      display: flex;
+      flex-wrap: wrap;
+      li{
+        color: black;
+        list-style: none;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 0.1rem 1rem;
+        border-radius: 1.5rem;
+        font-size: 0.8rem;
+      }
+    }
     section{
       margin-top: 6rem;
+    }
+    h1{
+      padding-bottom: 0.5rem;
+      border-bottom: dotted 3px rgb(59, 59, 59);
     }
   }
   aside{
@@ -102,6 +124,22 @@ main{
     position: fixed;
     width: 300px;
   }
+}
+
+.bg_pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0D1117;
+  opacity: 0.4;
+  z-index: -1;
+}
+.Paper {
+  background-image:  linear-gradient(#2e3237 4px, transparent 4px), linear-gradient(90deg, #2e3237 4px, transparent 4px), linear-gradient(#2e3237 2px, transparent 2px), linear-gradient(90deg, #2e3237 2px, #0D1117 2px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -4px -4px, -4px -4px, -2px -2px, -2px -2px;
 }
 
 footer {
@@ -177,78 +215,114 @@ h1{
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 1rem;
+  margin-top: 0.5rem;
 }
 
 section{
   h2{
-    background-color: #F19C79;
+    background-color: #FF007A;
     border-left: #0000003d solid 10px;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     margin-bottom: 3rem;
   }
   
   h3{
     box-sizing: content-box;
     font-size: 1.5rem;
-    color: #A44A3F;
-    border-bottom: #A44A3F solid 3px;
+    color: #FF007A;
+    border-bottom: #FF007A solid 3px;
     padding-left: 0.5rem;
     margin: 2rem 0;
   }
 
   p{
+    z-index: 1;
     line-height: 1.6;
+    margin: 2rem 0;
   }
 
   blockquote{
     margin: 1rem 0;
     padding: 0.5rem 1rem;
-    border-left: 5px solid #A44A3F;
-    background-color: #a44b3f8a;
+    border-left: 5px solid #00000062;
+    background-color: #00fff277;
     font-style: italic;
   }
 
   ul, ol{
     list-style-position: inside;
+    li{
+      line-height: 1.8;
+    }
   }
-
+  
+  .iwaku{
+    box-shadow: 0 0 40px 50px white;
+    color: #0D1117;
+    background-color: white;
+  }
+  
   .info{
     margin: 1rem 0;
     padding: 0.5rem 1rem;
-    border-left: 5px solid #9aa75a;
-    background-color: #d4e09b7d;
+    border-left: 5px solid #0000005e;
+    background-color: #4ed9ffc6;
   }
 
   .warning{
     margin: 1rem 0;
     padding: 0.5rem 1rem;
-    border-left: 5px solid #ff0000;
-    background-color: #ff00007d;
+    border-left: 5px solid #0000005e;
+    background-color: #FF4B5Cc6;
   }
 
   .tip{
     margin: 1rem 0;
     padding: 0.5rem 1rem;
-    border-left: 5px solid #e1d900;
-    background-color: #f6ff007d;
+    border-left: 5px solid #0000005e;
+    background-color: #FFD93Dc6;
+  }
+
+  .success{
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 5px solid #0000005e;
+    background-color: #3DFF8Cc6;
   }
 
   .enclosed_box {
-    border: 5px solid #D4E09B;
+    border: 5px solid #00C8FF;
     border-radius: 8px;
     padding: 1em;
     padding-left: 2.5em;
     position: relative;
-    margin-top: 2em;
-    background-color: rgba(255, 255, 255, 0.568);
+    margin: 5rem 0;
+    background-color: #00c8ff1a;
     h4 {
+      color: #0D1117;
+      background: #00C8FF;
       position: absolute;
-      top: -1em;
+      top: -2em;
       left: 1em;
-      background: #D4E09B;
       padding: 0 1em;
       font-weight: bold;
       font-size: 1.1em;
     }
+    li{
+      list-style: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px; /* 1rem = 14px に縮小 */
+  }
+
+  header ul li {
+    font-size: x-small;
+    height: 5vh;
+    width: 15vw;
+    line-height: 5vh;
   }
 }
