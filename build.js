@@ -57,7 +57,7 @@ for (const file of fs.readdirSync(articlesDir)) {
       .replaceAll("{{title}}", meta.title || "無題")
       .replaceAll("{{date}}", meta.date || "")
       .replaceAll("{{tags}}", tagHtml)
-      .replaceAll("{{content}}");
+      .replaceAll("{{content}}", bodyPart || "");
 
     fs.writeFileSync(distPath, html);
     console.log(`✅ built: ${distPath}`);
