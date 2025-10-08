@@ -30,13 +30,23 @@ for (const file of fs.readdirSync(articlesDir)) {
 
     // メタ情報解析
     const meta = {};
+    let currentKey = null;
     metaPart.split("\n").forEach(line => {
-      const match = line.match(/^(\w+):\s*(.+)$/);
-      if (match) meta[match[1]] = match[2];
+      const match = line.match(/^(\w+):\s*(.*)$/);
+      if (match) {
+        currentKey = match[1];
+        meta[currentKey] = match[2];
+      } else if (currentKey && line.match(/^\s*-\s*(.+)$/)) {
+        // tagsの複数行リスト対応
+        if (!Array.isArray(meta[currentKey])) meta[currentKey] = [];
+        meta[currentKey].push(line.replace(/^\s*-\s*/, ""));
+      }
     });
 
     // タグ解析
-    const tagLines = (meta.tags || "").split(",").filter(Boolean);
+    const tagLines = Array.isArray(meta.tags)
+      ? meta.tags
+      : (meta.tags || "").split(",").filter(Boolean);
     const tagHtml = tagLines.map(t => {
       const [id, name] = t.split(":");
       return `<li tag="${id.trim()}">${name.trim()}</li>`;
@@ -47,7 +57,7 @@ for (const file of fs.readdirSync(articlesDir)) {
       .replaceAll("{{title}}", meta.title || "無題")
       .replaceAll("{{date}}", meta.date || "")
       .replaceAll("{{tags}}", tagHtml)
-      .replaceAll("{{content}}", bodyPart.trim().replace(/\n/g, "<br>"));
+      .replaceAll("{{content}}");
 
     fs.writeFileSync(distPath, html);
     console.log(`✅ built: ${distPath}`);
