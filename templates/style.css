@@ -315,19 +315,16 @@ section{
       list-style: none;
     }
   }
-}
 
-.bg_pattern {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fffff;
-  opacity: 0.4;
-  z-index: -1;
-}
-.Polka_v2 {
+  .outlineST {
+    position: relative;
+  }
+
+  .outlineChild {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 @media (max-width: 600px) {

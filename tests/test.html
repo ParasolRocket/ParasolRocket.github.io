@@ -53,6 +53,8 @@
         <li tag="test">テスト</li>
         <li tag="memo">メモ</li>
         <li tag="other">その他</li>
+        <li tag="underground">アンダーグラウンドインターネット</li>
+        <li tag="VDA">閲覧注意</li>
       </ul>
       <section>
         <h2>はじめに</h2>
@@ -167,6 +169,34 @@
             <li>内容</li>
           </ul>
         </div>
+        <!--
+        <div style="position: relative; font-size: 5rem; font-weight: bold;">
+          縁取り文字  ***文字を通常のテキストとしての幅を持たせるため必須***
+          ***レイヤーは構造通りとなっています 一番下が一番上***
+          <div style="position: absolute; top: 0; left: 0; color: white; -webkit-text-stroke:9px white;">
+            縁取り文字
+            <div style="position: absolute; top: 0; left: 0; color: #FF007A; -webkit-text-stroke:6px #FF007A;">
+              縁取り文字
+              <div style="position: absolute; top: 0; left: 0; color: white; -webkit-text-stroke:3px white;">
+                縁取り文字
+                <div style="position: absolute; top: 0; left: 0; color: #FF007A; -webkit-text-stroke:0;">
+                  縁取り文字
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
+        <!-- 何も指定していないテキストが表示されます -->
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem"></div>
+        <!-- 0:白 何も指定していないように見えます -->
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="0 white"></div>
+        <!-- 1:赤 0:白 -->
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="2px #FF007A" o2="0 white"></div>
+        <!-- 2:白 1:赤 0:白 -->
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="4px white" o2="2px #FF007A" o3="0 white"></div> 
+        <!-- 2:赤 1:白 0:赤 -->
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="4px #FF007A" o2="2px white" o3="0 #FF007A"></div> 
       </section>
       <section>
         <h2>ページ遷移</h2>
@@ -204,49 +234,6 @@
       </section>
     </section>
   </footer>
-  <script>
-    const tagDataList =
-    {
-      "music": "#49d5eb",
-      "chiptune": "#49d5eb",
-      "composition": "#49d5eb",
-      "game": "#0acc2a",
-      "creation": "#0acc2a",
-      "ai": "#0acc2a",
-      "programming": "#0acc2a",
-      "windows": "#0acc2a",
-      "adobe": "#0acc2a",
-      "professional": "#cc8aeb",
-      "problem": "#fe9800",
-      "trifling": "#fe9800",
-      "life": "#fe9800",
-      "notes": "#fe9800",
-      "memory": "#fe9800",
-      "true": "#fe9800",
-      "advance": "#ff619d",
-      "backstory": "#ff619d",
-      "advertisement": "#cbcfde",
-      "news": "#cbcfde",
-      "test": "#ded523",
-      "memo": "#ded523",
-      "other": "#ded523"
-    };
-    document.querySelectorAll('span[col]').forEach(el => {
-      el.style.color = el.getAttribute('col');
-    });
-    document.querySelectorAll('span[hgl]').forEach(el => {
-      el.style.backgroundColor = el.getAttribute('hgl');
-    });
-    document.querySelectorAll('span[wgt]').forEach(el => {
-      el.style.fontWeight = el.getAttribute('wgt');
-    });
-    document.querySelectorAll('span[fsz]').forEach(el => {
-      el.style.fontSize = el.getAttribute('fsz');
-    });
-    document.querySelectorAll('li[tag]').forEach(el => {
-      const tag = el.getAttribute('tag');
-      el.style.backgroundColor = tagDataList[tag];
-    });
-  </script>
+  <script src="../templates/main.js"></script>
 </body>
 </html>
