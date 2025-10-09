@@ -6,7 +6,7 @@
   
   "scripts": {
     "prepare": "husky install",
-    "generate": "node build.js"
+    "build": "node build.js"
   },
 
   "license": "MIT",
