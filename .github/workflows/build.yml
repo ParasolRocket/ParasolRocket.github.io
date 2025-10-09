@@ -1,34 +1,24 @@
-name: Generate Articles
-
+name: Build Blog
 on:
   push:
+    branches: [ main ]
     paths:
       - "articlesText/**"
-      - "templates/base.html"
+      - "template/base.html"
       - "build.js"
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Generate HTML
-        run: npm run generate
-
-      - name: Commit and push generated HTML
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add articles/
-          git commit -m "Add generated articles" || echo "no changes to commit"
-          git push
+      - run: npm install
+      - run: node build.js
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./articles
