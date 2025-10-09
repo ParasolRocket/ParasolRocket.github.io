@@ -89,6 +89,7 @@ main{
     flex: 1;
     background-color: #0D1117;
     max-width: 1000px;
+    width: calc(100% - 2vw);
     margin: 2vh 2vw;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 8vh 8vw;
@@ -147,7 +148,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #A44A3F;
+  background-color: #2e3237;
   section{
     display: flex;
     flex-direction: column;
