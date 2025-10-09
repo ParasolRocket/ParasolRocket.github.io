@@ -1,65 +1,80 @@
 import fs from "fs";
 import path from "path";
 
-const articlesDir = "./articlesText";
-const outputDir = "./articles";
-const templatePath = "./templates/base.html";
+const SRC_DIR = "./articlesText";
+const OUT_DIR = "./articles";
+const BASE_HTML = "./templates/base.html";
 
-fs.mkdirSync(outputDir, { recursive: true });
+// タグ辞書（ID → 日本語名）
+const tagMap = {
+  music: "音楽",
+  chiptune: "チップチューン",
+  composition: "作曲",
+  game: "ゲーム",
+  creation: "制作",
+  ai: "AI",
+  programming: "プログラミング",
+  windows: "Windows",
+  adobe: "Adobe",
+  professional: "専門的",
+  problem: "悩み",
+  trifling: "たわいのないこと",
+  life: "日常",
+  notes: "雑記",
+  memory: "おもひで",
+  true: "実話",
+  advance: "進捗・記録",
+  backstory: "裏話",
+  advertisement: "宣伝",
+  news: "おしらせ",
+  test: "テスト",
+  memo: "メモ",
+  other: "その他",
+  underground: "アンダーグラウンドインターネット",
+  VDA: "閲覧注意"
+};
 
-// base.html の更新時刻
-const templateMtime = fs.statSync(templatePath).mtimeMs;
+// ベースHTMLを読み込み
+const baseTemplate = fs.readFileSync(BASE_HTML, "utf8");
 
-// テンプレート読み込み
-const baseTemplate = fs.readFileSync(templatePath, "utf8");
+// 出力フォルダがなければ作る
+if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
-// 全記事を走査
-for (const file of fs.readdirSync(articlesDir)) {
-  if (!file.endsWith(".txt")) continue;
+// 記事一覧を取得
+const files = fs.readdirSync(SRC_DIR).filter(f => f.endsWith(".txt"));
 
-  const srcPath = path.join(articlesDir, file);
-  const distPath = path.join(outputDir, file.replace(".txt", ".html"));
+files.forEach(file => {
+  const raw = fs.readFileSync(path.join(SRC_DIR, file), "utf8");
 
-  const srcTime = fs.statSync(srcPath).mtimeMs;
-  const distTime = fs.existsSync(distPath) ? fs.statSync(distPath).mtimeMs : 0;
+  // メタ情報と本文を分離
+  const [metaPart, ...bodyPart] = raw.split("\n\n");
+  const body = bodyPart.join("\n\n");
 
-  // base.htmlまたは記事が新しければ再生成
-  if (srcTime > distTime || templateMtime > distTime) {
-    const raw = fs.readFileSync(srcPath, "utf8");
-    const [metaPart, bodyPart] = raw.split("---", 2);
+  // メタ情報を解析
+  const metaLines = metaPart.split("\n");
+  const title = metaLines.find(line => line.startsWith("title:"))?.replace("title:", "").trim() || "無題";
+  const date = metaLines.find(line => line.startsWith("date:"))?.replace("date:", "").trim() || "";
+  const tagLine = metaLines.find(line => line.startsWith("tags:"))?.replace("tags:", "").trim() || "";
+  const tags = tagLine.split(",").map(tag => tag.trim()).filter(Boolean);
 
-    // メタ情報解析
-    const meta = {};
-    let currentKey = null;
-    metaPart.split("\n").forEach(line => {
-      const match = line.match(/^(\w+):\s*(.*)$/);
-      if (match) {
-        currentKey = match[1];
-        meta[currentKey] = match[2];
-      } else if (currentKey && line.match(/^\s*-\s*(.+)$/)) {
-        // tagsの複数行リスト対応
-        if (!Array.isArray(meta[currentKey])) meta[currentKey] = [];
-        meta[currentKey].push(line.replace(/^\s*-\s*/, ""));
-      }
-    });
+  // タグHTML生成
+  const tagListHTML = tags.map(tagID => {
+    const tagName = tagMap[tagID] || tagID;
+    return `<li tag="${tagID}">${tagName}</li>`;
+  }).join("\n");
 
-    // タグ解析
-    const tagLines = Array.isArray(meta.tags)
-      ? meta.tags
-      : (meta.tags || "").split(",").filter(Boolean);
-    const tagHtml = tagLines.map(t => {
-      const [id, name] = t.split(":");
-      return `<li tag="${id.trim()}">${name.trim()}</li>`;
-    }).join("");
+  // HTML生成
+  const html = baseTemplate
+    .replace(/{{title}}/g, title)
+    .replace(/{{date}}/g, date)
+    .replace("{{tags}}", tagListHTML)
+    .replace("{{content}}", body);
 
-    // HTML生成
-    const html = baseTemplate
-      .replaceAll("{{title}}", meta.title || "無題")
-      .replaceAll("{{date}}", meta.date || "")
-      .replaceAll("{{tags}}", tagHtml)
-      .replaceAll("{{content}}", bodyPart || "");
+  // 出力先パス
+  const outputFile = file.replace(".txt", ".html");
+  const outputPath = path.join(OUT_DIR, outputFile);
 
-    fs.writeFileSync(distPath, html);
-    console.log(`✅ built: ${distPath}`);
-  }
-}
+  // 書き出し
+  fs.writeFileSync(outputPath, html, "utf8");
+  console.log(`✅ ${outputFile} を生成しました`);
+});
