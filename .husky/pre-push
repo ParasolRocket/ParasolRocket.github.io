@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "🧱 Generating blog before push..."
-npm run generate
+npm run build
 echo "✅ Done! Continue pushing."
