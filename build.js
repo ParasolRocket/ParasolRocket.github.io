@@ -46,12 +46,25 @@ const files = fs.readdirSync(SRC_DIR).filter(f => f.endsWith(".txt"));
 files.forEach(file => {
   const raw = fs.readFileSync(path.join(SRC_DIR, file), "utf8");
 
-  // メタ情報と本文を分離
-  const [metaPart, ...bodyPart] = raw.split("\n\n");
-  const body = bodyPart.join("\n\n");
+  // メタ情報と本文を分離（行単位でハイフン6個以上の行を区切りとする）
+  // 改行コードはCRLF/LFどちらにも対応し、前後の空白も許容する
+  const delimiterRegex = /\r?\n\s*-{3,}\s*\r?\n/;
+  const parts = raw.split(delimiterRegex);
+  let metaPart = "";
+  let body = "";
+  if (parts.length >= 2) {
+    metaPart = parts[0].trim();
+    body = parts.slice(1).join("\n\n").trim();
+  } else {
+    // 区切りが見つからない場合のフォールバック挙動
+    // - メタが見つからない（誤記）なら警告を出してファイル全体を本文扱いにする
+    console.warn(`⚠️ ${file} に区切り行 (------) が見つかりません。全体を本文として扱います。`);
+    metaPart = "";
+    body = raw.trim();
+  }
 
   // メタ情報を解析
-  const metaLines = metaPart.split("\n");
+  const metaLines = metaPart ? metaPart.split(/\r?\n/) : [];
   const title = metaLines.find(line => line.startsWith("title:"))?.replace("title:", "").trim() || "無題";
   const date = metaLines.find(line => line.startsWith("date:"))?.replace("date:", "").trim() || "";
   const tagLine = metaLines.find(line => line.startsWith("tags:"))?.replace("tags:", "").trim() || "";

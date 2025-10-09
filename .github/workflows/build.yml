@@ -4,9 +4,12 @@ on:
     branches: [ main ]
     paths:
       - "articlesText/**"
-      - "template/base.html"
+      - "templates/base.html"
       - "build.js"
 
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
