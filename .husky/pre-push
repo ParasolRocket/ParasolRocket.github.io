@@ -2,5 +2,6 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "🧱 Generating blog before push..."
+export PATH=$PATH:/d\/nodejs
 npm run build
 echo "✅ Done! Continue pushing."
