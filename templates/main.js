@@ -8,6 +8,7 @@
     "game": "#0acc2a",
     "creation": "#0acc2a",
     "ai": "#0acc2a",
+    "tD": "#0acc2a",
     "programming": "#0acc2a",
     "windows": "#0acc2a",
     "adobe": "#0acc2a",

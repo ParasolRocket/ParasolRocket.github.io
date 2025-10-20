@@ -13,6 +13,7 @@ const tagMap = {
   game: "ゲーム",
   creation: "制作",
   ai: "AI",
+  tD: "3D",
   programming: "プログラミング",
   windows: "Windows",
   adobe: "Adobe",
