@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+Hentaigana:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+Hentaigana:wght@200..900&Mochiy+Pop+P+One&family=Noto+Serif+JP:wght@200..900&family=Yuji+Syuku&display=swap');
 
 *{
   margin: 0;
@@ -16,6 +16,66 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+body:has(.attention) {
+  overflow: hidden;
+}
+
+.attention{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient( -45deg, #2d2d2d, #2d2d2d 25px, #0D1117 25px, #0D1117 50px );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.5s;
+  h2{
+    font-size: 3rem;
+    margin-bottom: 3.6rem;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+  }
+  p{
+    font-size: 1.2rem;
+    margin-bottom: 2.4rem;
+    text-align: center;
+    width: 60vw;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 900;
+  }
+  ul{
+    display: flex;
+    list-style: none;
+    background-color: #ff007b7d;
+    padding: 0.5rem;
+    margin-bottom: 2.4rem;
+    li{
+      margin: 0 1rem;
+      font-size: 1.2rem;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 900;
+    }
+  }
+  button{
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #00FF9D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover{
+      background-color: #72ffc9;
+    }
+  }
 }
 
 header {
@@ -334,7 +394,7 @@ section{
 
 @media (max-width: 600px) {
   html {
-    font-size: 14px; /* 1rem = 14px に縮小 */
+    font-size: 80%;
   }
 
   header ul li {

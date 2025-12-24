@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="../templates/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
   <header>
     <div class="logo">
@@ -21,6 +23,18 @@
     </ul>
   </header>
   <main class="bg-pattern Paper">
+    <div class="attention">
+      <h2>ご案内</h2>
+      <p>このページには以下の内容が含まれています</p>
+      <ul>
+        <li>少し刺激の強い内容</li>
+        <li>好みの分かれる表現</li>
+        <li>職場や公共の場での閲覧に適さない可能性のある要素</li>
+      </ul>
+      <p>無理のないタイミングで、大丈夫そうであれば、下の「閲覧する」ボタンから入場してください</p>
+      <button onclick="this.parentElement.style.opacity='0'; document.body.style.overflow='auto'; setTimeout(() => this.parentElement.remove(), 500)">閲覧する</button>
+    </div>
+
     <nav>
       <div class="nav-logo">
         <img src="../templates/img/logo_mincho.png" alt="logo">
@@ -31,31 +45,68 @@
       <h3 id="date">2025年8月7日（木）</h3>
       <p>タグ：</p>
       <ul class="tags">
-        <li tag="music">音楽</li>
-        <li tag="chiptune">チップチューン</li>
-        <li tag="composition">作曲</li>
-        <li tag="game">ゲーム</li>
-        <li tag="creation">制作</li>
-        <li tag="ai">AI</li>
-        <li tag="programming">プログラミング</li>
-        <li tag="windows">Windows</li>
-        <li tag="adobe">Adobe</li>
-        <li tag="professional">専門的</li>
-        <li tag="problem">悩み</li>
-        <li tag="trifling">たわいのないこと</li>
-        <li tag="life">日常</li>
-        <li tag="notes">雑記</li>
-        <li tag="memory">おもひで</li>
-        <li tag="true">実話</li>
-        <li tag="advance">進捗・記録</li>
-        <li tag="backstory">裏話</li>
-        <li tag="advertisement">宣伝</li>
-        <li tag="news">おしらせ</li>
-        <li tag="test">テスト</li>
-        <li tag="memo">メモ</li>
-        <li tag="other">その他</li>
-        <li tag="underground">アンダーグラウンドインターネット</li>
-        <li tag="VDA">閲覧注意</li>
+        <li tag="music" style="background-color: #49d5eb;">音楽</li>
+        <li tag="compose" style="background-color: #49d5eb;">作曲</li>
+        <li tag="audio" style="background-color: #49d5eb;">オーディオ</li>
+        <li tag="dtm" style="background-color: #49d5eb;">DTM</li>
+        <li tag="daw" style="background-color: #49d5eb;">DAW</li>
+        <li tag="sound" style="background-color: #49d5eb;">音</li>
+        <li tag="creation" style="background-color: #0acc2a;">創作</li>
+        <li tag="production" style="background-color: #0acc2a;">制作</li>
+        <li tag="idea" style="background-color: #0acc2a;">アイデア</li>
+        <li tag="design" style="background-color: #0acc2a;">デザイン</li>
+        <li tag="made" style="background-color: #0acc2a;">作ってみた</li>
+        <li tag="expression" style="background-color: #0acc2a;">表現</li>
+        <li tag="professional" style="background-color: #0acc2a;">専門的</li>
+        <li tag="illustration" style="background-color: #0acc2a;">イラスト</li>
+        <li tag="game" style="background-color: #cc8aeb;">ゲーム</li>
+        <li tag="retro_game" style="background-color: #cc8aeb;">レトロゲーム</li>
+        <li tag="strategy" style="background-color: #cc8aeb;">攻略</li>
+        <li tag="game_env" style="background-color: #cc8aeb;">ゲーム環境</li>
+        <li tag="game_dev" style="background-color: #cc8aeb;">ゲーム制作</li>
+        <li tag="daily" style="background-color: #fe9800;">日常</li>
+        <li tag="status" style="background-color: #fe9800;">近況</li>
+        <li tag="life" style="background-color: #fe9800;">生活</li>
+        <li tag="today" style="background-color: #fe9800;">今日という一日</li>
+        <li tag="sudden" style="background-color: #fe9800;">なんとなく</li>
+        <li tag="worry" style="background-color: #fe9800;">悩み</li>
+        <li tag="smalltalk" style="background-color: #fe9800;">たわいのないこと</li>
+        <li tag="memories" style="background-color: #fe9800;">おもひで</li>
+        <li tag="notes" style="background-color: #fe9800;">雑記</li>
+        <li tag="casual" style="background-color: #fe9800;">ゆるばなし</li>
+        <li tag="talk" style="background-color: #ff619d;">◯◯を語る</li>
+        <li tag="impression" style="background-color: #ff619d;">感想・所感</li>
+        <li tag="review" style="background-color: #ff619d;">レビュー</li>
+        <li tag="analysis" style="background-color: #ff619d;">考察</li>
+        <li tag="pc" style="background-color: #cbcfde;">PC</li>
+        <li tag="software" style="background-color: #cbcfde;">ソフトウェア</li>
+        <li tag="trouble" style="background-color: #cbcfde;">トラブル</li>
+        <li tag="tech" style="background-color: #cbcfde;">技術</li>
+        <li tag="web" style="background-color: #cbcfde;">Web</li>
+        <li tag="internet" style="background-color: #cbcfde;">インターネット</li>
+        <li tag="notice" style="background-color: #ff7028;">お知らせ</li>
+        <li tag="promotion" style="background-color: #ff7028;">宣伝</li>
+        <li tag="announcement" style="background-color: #ff7028;">告知</li>
+        <li tag="policy" style="background-color: #ff7028;">方針</li>
+        <li tag="behind_the_scenes" style="background-color: #ff7028;">裏話</li>
+        <li tag="update" style="background-color: #ff7028;">更新</li>
+        <li tag="test" style="background-color: #ded523;">テスト</li>
+        <li tag="memo" style="background-color: #ded523;">メモ</li>
+        <li tag="trial" style="background-color: #ded523;">おためし</li>
+        <li tag="nonsense" style="background-color: #ded523;">なんせんす</li>
+        <li tag="anime" style="background-color: #3c64b6;">アニメ</li>
+        <li tag="manga" style="background-color: #3c64b6;">漫画</li>
+        <li tag="movie" style="background-color: #3c64b6;">映画</li>
+        <li tag="video" style="background-color: #3c64b6;">動画</li>
+        <li tag="hobby" style="background-color: #3c64b6;">趣味</li>
+        <li tag="other" style="background-color: #3c64b6;">その他</li>
+        <li tag="underground" style="background-color: #000000; color: #FFFFFF; border: 1px solid #FFFFFF;">アンダーグラウンド
+        </li>
+        <li tag="VDA" style="background-color: #000000; color: #FFFFFF; border: 1px solid #FFFFFF;">閲覧注意</li>
+        <li tag="sensitive" style="background-color: #000000; color: #FFFFFF; border: 1px solid #FFFFFF;">センシティブ</li>
+        <li tag="r18" style="background-color: #000000; color: #FFFFFF; border: 1px solid #FFFFFF;">R指定</li>
+        <li tag="abyss" style="background-color: #000000; color: #FFFFFF; border: 1px solid #FFFFFF;">深淵</li>
+        <li tag="未定義" style="background-color: #666666;">未定義</li>
       </ul>
       <section>
         <h2>はじめに</h2>
@@ -195,9 +246,11 @@
         <!-- 1:赤 0:白 -->
         <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="2px #FF007A" o2="0 white"></div>
         <!-- 2:白 1:赤 0:白 -->
-        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="4px white" o2="2px #FF007A" o3="0 white"></div> 
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="4px white" o2="2px #FF007A"
+          o3="0 white"></div>
         <!-- 2:赤 1:白 0:赤 -->
-        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="4px #FF007A" o2="2px white" o3="0 #FF007A"></div> 
+        <div class="outline" text="縁取り" font-weight="bold" font-size="2rem" o1="4px #FF007A" o2="2px white"
+          o3="0 #FF007A"></div>
       </section>
       <section>
         <h2>ページ遷移</h2>
@@ -237,4 +290,5 @@
   </footer>
   <script src="../templates/main.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,20 @@
 'use strict';
 {
+  fetch('../config/tags.json')
+    .then(response => response.json())
+    .then(tagConfig => {
+      const hasUnderground = Array.from(document.querySelectorAll('li[tag]')).some(el => {
+        const tag = el.getAttribute('tag');
+        const config = tagConfig[tag];
+        return config && config['category'] === 'UNDERGROUND';
+      });
+      if (!hasUnderground) {
+        document.body.style.overflow = 'auto';
+        document.querySelectorAll('div.attention').forEach(el => {
+          el.remove();
+        });
+      }
+  });
   document.querySelectorAll('span[col]').forEach(el => {
     el.style.color = el.getAttribute('col');
   });
