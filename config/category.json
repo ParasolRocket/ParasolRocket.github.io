@@ -1,0 +1,13 @@
+{
+    "SOUND": "#49d5eb",
+    "CREATE": "#0acc2a",
+    "GAME": "#cc8aeb",
+    "DIARY": "#fe9800",
+    "TALKING": "#ff619d",
+    "TECH": "#cbcfde",
+    "OPERATE": "#ff7028",
+    "TEST": "#ded523",
+    "OTHERS": "#3c64b6",
+    "UNDERGROUND": "#000000",
+    "UNDEFINED": "#666666"
+}

@@ -8,6 +8,10 @@
   font-family: 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans KR', 'Noto Serif Hentaigana',sans-serif;
 }
 
+html {
+  font-size: 90%;
+}
+
 body {
   height: 100vh;
   display: flex;

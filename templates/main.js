@@ -1,34 +1,5 @@
 'use strict';
 {
-  const tagDataList =
-  {
-    "music": "#49d5eb",
-    "chiptune": "#49d5eb",
-    "composition": "#49d5eb",
-    "game": "#0acc2a",
-    "creation": "#0acc2a",
-    "ai": "#0acc2a",
-    "tD": "#0acc2a",
-    "programming": "#0acc2a",
-    "windows": "#0acc2a",
-    "adobe": "#0acc2a",
-    "professional": "#cc8aeb",
-    "problem": "#fe9800",
-    "trifling": "#fe9800",
-    "life": "#fe9800",
-    "notes": "#fe9800",
-    "memory": "#fe9800",
-    "true": "#fe9800",
-    "advance": "#ff619d",
-    "backstory": "#ff619d",
-    "advertisement": "#cbcfde",
-    "news": "#cbcfde",
-    "test": "#ded523",
-    "memo": "#ded523",
-    "other": "#ded523",
-    "underground": "#000000",
-    "VDA": "#000000"
-  };
   document.querySelectorAll('span[col]').forEach(el => {
     el.style.color = el.getAttribute('col');
   });
@@ -40,14 +11,6 @@
   });
   document.querySelectorAll('span[fsz]').forEach(el => {
     el.style.fontSize = el.getAttribute('fsz');
-  });
-  document.querySelectorAll('li[tag]').forEach(el => {
-    const tag = el.getAttribute('tag');
-    el.style.backgroundColor = tagDataList[tag];
-    if (tag === "underground" || tag === "VDA") {
-      el.style.color = "#FFFFFF";
-      el.style.border = "1px solid #FFFFFF";
-    }
   });
   document.querySelectorAll('div.outline').forEach(el => {
     const text = el.getAttribute('text') || '';
