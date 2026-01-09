@@ -18,10 +18,6 @@ body {
   flex-direction: column;
 }
 
-body:has(.attention) {
-  overflow: hidden;
-}
-
 .attention{
   position: fixed;
   top: 0;
@@ -395,6 +391,17 @@ section{
 @media (max-width: 600px) {
   html {
     font-size: 80%;
+  }
+
+  .attention ul{
+    flex-direction: column;
+    align-items: center;
+    li {
+      text-align: center;
+    }
+    li + li{
+      margin-top: 1rem;
+    }
   }
 
   header ul li {

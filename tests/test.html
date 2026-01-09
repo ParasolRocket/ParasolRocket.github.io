@@ -8,6 +8,7 @@
   <meta name="google-site-verification" content="vfDFCyFHP9djsL6XW9Tplr1bqGQRH0ImFbJkRn_nOj4" />
   <link rel="stylesheet" href="../templates/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../prism/prism.css">
 </head>
 
 <body>
@@ -23,18 +24,7 @@
     </ul>
   </header>
   <main class="bg-pattern Paper">
-    <div class="attention">
-      <h2>ご案内</h2>
-      <p>このページには以下の内容が含まれています</p>
-      <ul>
-        <li>少し刺激の強い内容</li>
-        <li>好みの分かれる表現</li>
-        <li>職場や公共の場での閲覧に適さない可能性のある要素</li>
-      </ul>
-      <p>無理のないタイミングで、大丈夫そうであれば、下の「閲覧する」ボタンから入場してください</p>
-      <button onclick="this.parentElement.style.opacity='0'; document.body.style.overflow='auto'; setTimeout(() => this.parentElement.remove(), 500)">閲覧する</button>
-    </div>
-
+    <div id="attentionContainer"></div>
     <nav>
       <div class="nav-logo">
         <img src="../templates/img/logo_mincho.png" alt="logo">
@@ -257,6 +247,18 @@
         <p><a href="../pages/001.html">テストページ001</a>に遷移</p>
         <p><a href="../pages/002.html">テストページ002</a>に遷移</p>
       </section>
+      <section>
+        <h2>画像表示のテスト</h2>
+        <img src="../templates/img/logo_mincho.png" alt="ロゴ画像" width="200px">
+        <img src="img/indexed.png" alt="テスト画像" width="200px">
+      </section>
+      <section>
+        <h2>PrismJSでのシンタックスハイライトのテスト</h2>
+        <pre><code class="language-js">
+# これはPythonのサンプルコードです
+
+        </code></pre>
+      </section>
     </article>
     <aside>
       aside
@@ -289,6 +291,7 @@
     </section>
   </footer>
   <script src="../templates/main.js"></script>
+  <script src="../prism/prism.js"></script>
 </body>
 
 </html>

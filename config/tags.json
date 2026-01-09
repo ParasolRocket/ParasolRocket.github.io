@@ -36,6 +36,7 @@
   "impression": {"name": "感想・所感", "category": "TALKING"},
   "review": {"name": "レビュー", "category": "TALKING"},
   "analysis": {"name": "考察", "category": "TALKING"},
+  "commentary": {"name": "解説", "category": "TALKING"},
 
   "pc": {"name": "PC", "category": "TECH"},
   "software": {"name": "ソフトウェア", "category": "TECH"},

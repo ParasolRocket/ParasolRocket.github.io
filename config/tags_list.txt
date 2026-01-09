@@ -35,6 +35,7 @@ talk (◯◯を語る)
 impression (感想・所感)
 review (レビュー)
 analysis (考察)
+commentary (解説)
 
 pc (PC)
 software (ソフトウェア)

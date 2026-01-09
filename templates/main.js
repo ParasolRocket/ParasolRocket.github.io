@@ -6,13 +6,25 @@
       const hasUnderground = Array.from(document.querySelectorAll('li[tag]')).some(el => {
         const tag = el.getAttribute('tag');
         const config = tagConfig[tag];
-        return config && config['category'] === 'UNDERGROUND';
+        return config['category'] === 'UNDERGROUND';
       });
-      if (!hasUnderground) {
-        document.body.style.overflow = 'auto';
-        document.querySelectorAll('div.attention').forEach(el => {
-          el.remove();
-        });
+      console.log('hasUnderground:', hasUnderground);
+      if (hasUnderground) {
+        document.body.style.overflow = 'hidden';
+        const container = document.getElementById('attentionContainer');
+        container.innerHTML = `
+          <div class="attention">
+            <h2>ご案内</h2>
+            <p>このページには以下の内容が含まれています</p>
+            <ul>
+              <li>少し刺激の強い内容</li>
+              <li>好みの分かれる表現</li>
+              <li>職場や公共の場での閲覧に適さない可能性のある要素</li>
+            </ul>
+            <p>無理のないタイミングで、大丈夫そうであれば、下の「入場する」ボタンから入場してください</p>
+            <button onclick="this.parentElement.style.opacity='0'; document.body.style.overflow='auto'; setTimeout(() => this.parentElement.remove(), 500)">入場する</button>
+          </div>
+        `;
       }
   });
   document.querySelectorAll('span[col]').forEach(el => {
